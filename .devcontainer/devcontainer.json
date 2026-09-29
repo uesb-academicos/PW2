@@ -1,0 +1,10 @@
+{
+  "name": "PW2 - HTML CSS JavaScript",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "customizations": {
+    "vscode": {
+      "extensions": ["ritwickdey.LiveServer", "esbenp.prettier-vscode"]
+    }
+  },
+  "forwardPorts": [5500]
+}

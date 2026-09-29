@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Atividade de Programação Web II - exercícios dos capítulos 6, 7 e 8 sobre Map, Set, let e const no ECMAScript 6.">
+  <meta name="author" content="Thiago Ferreira Prates Neves">
+  <title>PW2 | Exercícios capítulos 6, 7 e 8</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/exercicios.js" defer></script>
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+  <header class="topo-institucional">
+    <div class="container cabecalho-oficial">
+      <div class="marca marca--uesb">
+        <img src="assets/uesb.png" alt="Brasão da Universidade Estadual do Sudoeste da Bahia - UESB">
+        <span>Brasão da UESB</span>
+      </div>
+      <div class="instituicao">
+        <strong>UNIVERSIDADE ESTADUAL DO SUDOESTE DA BAHIA - UESB</strong>
+        <strong>CENTRO DE EDUCAÇÃO ABERTA E A DISTÂNCIA - CEAD</strong>
+        <strong>UNIVERSIDADE ABERTA DO BRASIL - UAB</strong>
+      </div>
+      <div class="marca marca--uab">
+        <img src="assets/uab.png" alt="Logomarca da Universidade Aberta do Brasil - UAB">
+        <span>Logomarca UAB</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="conteudo" class="container pagina">
+    <section class="titulo-atividade">
+      <p class="rotulo">Tecnologia em Análise e Desenvolvimento de Sistemas</p>
+      <h1>EXERCÍCIOS - CAPÍTULOS 6, 7 E 8</h1>
+      <p class="subtitulo">Map, Set, let e const no ECMAScript 6</p>
+    </section>
+
+    <section class="card ficha" aria-labelledby="identificacao">
+      <h2 id="identificacao">Identificação acadêmica</h2>
+      <dl class="grade-dados">
+        <div><dt>DISCIPLINA:</dt><dd>Programação Web II (2026.2)</dd></div>
+        <div><dt>PROFESSOR:</dt><dd>Lucas Santos de Oliveira</dd></div>
+        <div><dt>DISCENTE:</dt><dd>Thiago Ferreira Prates Neves</dd></div>
+        <div><dt>MATRÍCULA:</dt><dd>202511865</dd></div>
+        <div><dt>POLO:</dt><dd>UAB Brumado - BA</dd></div>
+        <div><dt>SEMESTRE:</dt><dd>4º Semestre</dd></div>
+        <div><dt>ATIVIDADE:</dt><dd>Exercícios cap. 6, 7 e 8</dd></div>
+        <div><dt>VENCIMENTO:</dt><dd>29/09/2026 - 23:59</dd></div>
+      </dl>
+    </section>
+
+    <nav class="sumario card" aria-label="Navegação entre exercícios">
+      <strong>Questões</strong>
+      <a href="#exercicio-1">1. Comprinhas online</a>
+      <a href="#exercicio-2">2. Retirando o excesso</a>
+      <a href="#exercicio-3">3. Sei tudo sobre variáveis</a>
+      <a href="#exercicio-4">4. Não estou entendendo mais nada</a>
+      <a href="#exercicio-5">5. Tudo fora de escopo</a>
+    </nav>
+
+    <section class="exercicio card" id="exercicio-1">
+      <div class="cabecalho-exercicio"><span>01</span><div><small>Map</small><h2>Exercício 1 - Comprinhas online</h2></div></div>
+
+      <div class="enunciado">
+        <div class="enunciado__cabecalho"><strong>Enunciado original - transcrição literal</strong><span>PDF, página 1</span></div>
+        <p>Implemente o método 'calculaValorTotalDaCompra' que recebe quatro parâmetros:</p>
+        <ul>
+          <li>produtos: Lista com o nome dos produtos comprados</li>
+          <li>cidade: String que representa o nome da cidade</li>
+          <li>caixa: Mapa que contém relação de produtos e preços</li>
+          <li>fretes: Mapa que contém relação de cidades e fretes</li>
+        </ul>
+        <p>Calcule o preço total da compra junto com o frete de acordo com as tabelas a seguir:</p>
+        <div class="duas-tabelas">
+          <div><h3>Produtos:</h3><table><thead><tr><th>Produto</th><th>Preço</th></tr></thead><tbody><tr><td>Arroz</td><td>7.10</td></tr><tr><td>Feijão</td><td>2.30</td></tr><tr><td>Macarrão</td><td>4.70</td></tr><tr><td>Refrigerante</td><td>3.00</td></tr></tbody></table></div>
+          <div><h3>Fretes:</h3><table><thead><tr><th>Cidade</th><th>Frete</th></tr></thead><tbody><tr><td>São Paulo</td><td>10.10</td></tr><tr><td>Rio de Janeiro</td><td>12.30</td></tr><tr><td>Brasília</td><td>14.70</td></tr><tr><td>Outros</td><td>13.00</td></tr></tbody></table></div>
+        </div>
+        <p class="exemplo-original">• Exemplo: calculaValorTotalDaCompra(['Arroz'], 'São Paulo', caixa, fretes) → 7.20</p>
+      </div>
+
+      <div class="resposta">
+        <h3>Resposta detalhada</h3>
+        <p>A estrutura <code>Map</code> é adequada porque relaciona uma chave a um valor: no primeiro mapa, cada produto é a chave e o preço é o valor; no segundo, cada cidade é a chave e o frete é o valor. A função recebe exatamente os quatro parâmetros solicitados no enunciado e inicia a variável <code>total</code> com zero.</p>
+        <p>Em seguida, o laço <code>for...of</code> percorre a lista <code>produtos</code>. Para cada produto, <code>caixa.get(produto)</code> consulta o preço correspondente e acrescenta esse valor ao total. Depois da soma dos itens, a função verifica se a cidade informada existe em <code>fretes</code>. Se existir, adiciona o frete daquela cidade; caso contrário, utiliza o valor associado à chave <code>'Outros'</code>.</p>
+        <p>O valor devolvido por <code>return total</code> representa, portanto, <strong>soma dos produtos + frete</strong>. Para o exemplo com Arroz e São Paulo, os números apresentados nas próprias tabelas resultam em <strong>7.10 + 10.10 = 17.20</strong>.</p>
+        <aside class="alerta"><strong>Observação sobre o enunciado:</strong> a transcrição acima mantém literalmente o resultado <code>7.20</code> impresso no PDF. Esse valor não corresponde à soma dos dados fornecidos. A implementação segue a regra textual do exercício e, por isso, retorna <code>17.20</code>.</aside>
+      </div>
+
+      <div class="codigo"><div class="codigo__topo"><strong>Código-fonte da solução</strong><button class="copiar" data-copy="codigo-1">Copiar</button></div><pre><code id="codigo-1">const caixa = new Map([
+    ['Arroz', 7.10],
+    ['Feijão', 2.30],
+    ['Macarrão', 4.70],
+    ['Refrigerante', 3.00]
+]);
+
+const fretes = new Map([
+    ['São Paulo', 10.10],
+    ['Rio de Janeiro', 12.30],
+    ['Brasília', 14.70],
+    ['Outros', 13.00]
+]);
+
+function calculaValorTotalDaCompra(produtos, cidade, caixa, fretes) {
+    let total = 0;
+
+    for (const produto of produtos) {
+        total += caixa.get(produto);
+    }
+
+    if (fretes.has(cidade)) {
+        total += fretes.get(cidade);
+    } else {
+        total += fretes.get('Outros');
+    }
+
+    return total;
+}
+
+console.log(calculaValorTotalDaCompra(['Arroz'], 'São Paulo', caixa, fretes));
+// 17.20</code></pre></div>
+      <div class="execucao execucao--form">
+        <fieldset class="entrada"><legend>Produtos da compra</legend>
+          <label><input type="checkbox" name="produto-1" value="Arroz" checked> Arroz — R$ 7,10</label>
+          <label><input type="checkbox" name="produto-1" value="Feijão"> Feijão — R$ 2,30</label>
+          <label><input type="checkbox" name="produto-1" value="Macarrão"> Macarrão — R$ 4,70</label>
+          <label><input type="checkbox" name="produto-1" value="Refrigerante"> Refrigerante — R$ 3,00</label>
+        </fieldset>
+        <label class="entrada" for="cidade-1">Cidade
+          <select id="cidade-1"><option>São Paulo</option><option>Rio de Janeiro</option><option>Brasília</option><option>Outros</option></select>
+        </label>
+        <button class="botao" type="button" data-run="1">Executar</button>
+        <output id="saida-1" aria-live="polite">Aguardando execução.</output>
+      </div>
+    </section>
+
+    <section class="exercicio card" id="exercicio-2">
+      <div class="cabecalho-exercicio"><span>02</span><div><small>Set</small><h2>Exercício 2 - Retirando o excesso</h2></div></div>
+      <div class="enunciado">
+        <div class="enunciado__cabecalho"><strong>Enunciado original - transcrição literal</strong><span>PDF, página 2</span></div>
+        <p>Implemente o método 'removeDuplicatas' quer recebe o seguinte parâmetro:</p>
+        <ul><li>numeros: lista de números inteiros positivos</li></ul>
+        <p>O método deve retornar a lista de número sem repetições. Utilize a estrutura de dados Set para resolver este problema.</p>
+        <p class="exemplo-original">• Exemplo: removeDuplicatas([1,1,2,2,3,3]) → [1,2,3]</p>
+      </div>
+      <div class="resposta">
+        <h3>Resposta detalhada</h3>
+        <p><code>Set</code> é uma estrutura do ECMAScript 6 que armazena apenas valores únicos. Quando o array recebido é passado para <code>new Set(numeros)</code>, as ocorrências repetidas são descartadas automaticamente.</p>
+        <p>Depois, o código percorre o conjunto com <code>for...of</code> e adiciona cada valor único ao array <code>resultado</code>. Dessa forma, a função retorna um array, como solicitado, e preserva a ordem da primeira ocorrência dos números.</p>
+      </div>
+      <div class="codigo"><div class="codigo__topo"><strong>Código-fonte da solução</strong><button class="copiar" data-copy="codigo-2">Copiar</button></div><pre><code id="codigo-2">function removeDuplicatas(numeros) {
+    const conjunto = new Set(numeros);
+    const resultado = [];
+
+    for (const numero of conjunto) {
+        resultado.push(numero);
+    }
+
+    return resultado;
+}
+
+console.log(removeDuplicatas([1, 1, 2, 2, 3, 3]));
+// [1, 2, 3]</code></pre></div>
+      <div class="execucao execucao--form">
+        <label class="entrada" for="numeros-2">Números separados por vírgula
+          <input id="numeros-2" type="text" value="1, 1, 2, 2, 3, 3" inputmode="numeric" aria-describedby="ajuda-numeros-2">
+          <small id="ajuda-numeros-2">Informe inteiros positivos separados por vírgula.</small>
+        </label>
+        <button class="botao" type="button" data-run="2">Executar</button>
+        <output id="saida-2" aria-live="polite">Aguardando execução.</output>
+      </div>
+    </section>
+
+    <section class="exercicio card" id="exercicio-3">
+      <div class="cabecalho-exercicio"><span>03</span><div><small>var, let e closures</small><h2>Exercício 3 - Sei tudo sobre variáveis</h2></div></div>
+      <div class="enunciado">
+        <div class="enunciado__cabecalho"><strong>Enunciado original - transcrição literal</strong><span>PDF, página 2</span></div>
+        <p>Considere o trecho de código abaixo e responda as questões:</p>
+        <div class="codigo codigo--original"><pre><code>var arrayFuncoes = [];
+for(var i = 0; i &lt; 10; i++){
+    arrayFuncoes.push(function(){
+        console.log(i);
+    });
+}
+
+arrayFuncoes.forEach(function(funcao){
+    funcao();
+});</code></pre></div>
+        <p><strong>a)</strong> Quais os valores são exibidos no console na execução desse código?</p><p><strong>b)</strong> Como podemos ajustar o comportamento desta função utilizando ES6?</p>
+      </div>
+      <div class="resposta">
+        <h3>Resposta detalhada</h3>
+        <p><strong>a)</strong> O valor <code>10</code> é exibido <strong>dez vezes</strong>. O motivo é que <code>var</code> possui escopo de função, e não escopo de bloco. O laço não cria uma nova variável <code>i</code> para cada iteração; todas as funções adicionadas ao array mantêm acesso à mesma variável.</p>
+        <p>As funções são apenas armazenadas durante o <code>for</code>. Elas são executadas posteriormente no <code>forEach</code>. Nesse momento o laço já terminou, a condição <code>i &lt; 10</code> deixou de ser verdadeira e o valor compartilhado de <code>i</code> já é <code>10</code>. Por isso todas as funções imprimem o mesmo número.</p>
+        <p><strong>b)</strong> No ECMAScript 6, a solução é declarar o contador com <code>let</code>. Em um <code>for</code>, <code>let</code> cria uma associação própria de <code>i</code> para cada iteração. Cada função fecha sobre o valor daquela iteração e, quando executada, imprime a sequência de <code>0</code> a <code>9</code>.</p>
+      </div>
+      <div class="comparacao">
+        <div><h3>Com <code>var</code></h3><p>Saída esperada:</p><code>10, 10, 10, 10, 10, 10, 10, 10, 10, 10</code></div>
+        <div><h3>Com <code>let</code></h3><p>Saída esperada:</p><code>0, 1, 2, 3, 4, 5, 6, 7, 8, 9</code></div>
+      </div>
+      <div class="codigo"><div class="codigo__topo"><strong>Código-fonte ES6</strong><button class="copiar" data-copy="codigo-3">Copiar</button></div><pre><code id="codigo-3">const arrayFuncoes = [];
+for (let i = 0; i &lt; 10; i++) {
+    arrayFuncoes.push(function() {
+        console.log(i);
+    });
+}
+
+arrayFuncoes.forEach(function(funcao) {
+    funcao();
+});
+
+// Saída: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</code></pre></div>
+      <div class="execucao execucao--dupla">
+        <div><strong>Comparar comportamento</strong><p>Execute cada versão e compare as saídas.</p></div>
+        <button class="botao secundario" type="button" data-run="3-var">Executar com var</button>
+        <button class="botao" type="button" data-run="3-let">Executar com let</button>
+        <output id="saida-3-var" aria-live="polite">Saída com var: aguardando execução.</output>
+        <output id="saida-3-let" aria-live="polite">Saída com let: aguardando execução.</output>
+      </div>
+    </section>
+
+    <section class="exercicio card" id="exercicio-4">
+      <div class="cabecalho-exercicio"><span>04</span><div><small>const e objetos</small><h2>Exercício 4 - Não estou entendendo mais nada</h2></div></div>
+      <div class="enunciado">
+        <div class="enunciado__cabecalho"><strong>Enunciado original - transcrição literal</strong><span>PDF, páginas 2-3</span></div>
+        <p>Uma jovem programadora pensou que havia entendido como funcionava a declaração de variáveis com let e const até ver o seguinte trecho de código:</p>
+        <div class="codigo codigo--original"><pre><code>const jogador = {};
+jogador.nome = 'Rodrigo';
+jogador.idade = 33;
+console.log(jogador.nome + '_' + jogador.idade); // saída: Rodrigo_33</code></pre></div>
+        <p>Ela achou que este código não funcionaria, pois havia entendido que não era possível colocar novos valores em variáveis declaradas com const. Por que este código funciona sem problemas?</p>
+      </div>
+      <div class="resposta">
+        <h3>Resposta detalhada</h3>
+        <p><code>const</code> impede que a variável <code>jogador</code> seja <strong>reatribuída</strong> para outra referência. Isso significa que, depois de <code>const jogador = {}</code>, não seria permitido fazer algo como <code>jogador = { nome: 'Maria' }</code>.</p>
+        <p>Entretanto, o objeto apontado por essa referência continua sendo mutável. Acrescentar <code>jogador.nome</code> e <code>jogador.idade</code> modifica propriedades do mesmo objeto; não substitui a referência guardada pela constante. Por isso o código é válido e imprime <code>Rodrigo_33</code>.</p>
+        <p>Se fosse necessário impedir também alterações nas propriedades do objeto, seria preciso aplicar outra estratégia de imutabilidade, como <code>Object.freeze()</code>. Isso é diferente da função de <code>const</code> e é apenas uma informação complementar, não parte do enunciado.</p>
+      </div>
+      <div class="codigo"><div class="codigo__topo"><strong>Código demonstrativo</strong><button class="copiar" data-copy="codigo-4">Copiar</button></div><pre><code id="codigo-4">const jogador = {};
+jogador.nome = 'Rodrigo';
+jogador.idade = 33;
+console.log(jogador.nome + '_' + jogador.idade);
+// Rodrigo_33</code></pre></div>
+      <div class="execucao"><div><strong>Executar exemplo</strong><p>Demonstra a alteração de propriedades.</p></div><button class="botao" data-run="4">Executar</button><output id="saida-4">Aguardando execução.</output></div>
+    </section>
+
+    <section class="exercicio card" id="exercicio-5">
+      <div class="cabecalho-exercicio"><span>05</span><div><small>Escopo e declaração</small><h2>Exercício 5 - Tudo fora de escopo</h2></div></div>
+      <div class="enunciado">
+        <div class="enunciado__cabecalho"><strong>Enunciado original - transcrição literal</strong><span>PDF, página 3</span></div>
+        <p>Refatore o código a seguir utilizando o const e let.</p>
+        <div class="codigo codigo--original"><pre><code>var status = [
+    { codigo: 'OK', resposta: 'Sucesso' },
+    { codigo: 'FAILED', resposta: 'Erro' },
+    { codigo: 'PENDING', resposta: 'Pendente' }
+];
+var mensagem = '';
+var codigoAtual = 'OK';
+
+for (var i = 0; i &lt; status.length; i++) {
+    if (status[i].codigo === codigoAtual) {
+        mensagem = status[i].resposta;
+    }
+}
+
+console.log(mensagem);</code></pre></div>
+      </div>
+      <div class="resposta">
+        <h3>Resposta detalhada</h3>
+        <p>A escolha entre <code>const</code> e <code>let</code> deve ser feita observando se a variável será reatribuída. O array <code>status</code> não recebe outra referência depois de criado, então pode ser declarado com <code>const</code>. Da mesma forma, <code>codigoAtual</code> permanece com o valor <code>'OK'</code> durante todo o programa.</p>
+        <p><code>mensagem</code>, por outro lado, começa como string vazia e depois recebe o texto correspondente ao status encontrado; portanto precisa de <code>let</code>. O contador <code>i</code> também muda em cada repetição do laço, logo deve ser declarado com <code>let</code>. Além disso, o uso de <code>let</code> limita <code>i</code> ao bloco do <code>for</code>, evitando que o contador fique acessível fora do trecho em que é necessário.</p>
+        <p>Com <code>codigoAtual = 'OK'</code>, a comparação encontra o primeiro objeto do array e atribui <code>'Sucesso'</code> a <code>mensagem</code>. A saída final é, portanto, <code>Sucesso</code>.</p>
+      </div>
+      <div class="codigo"><div class="codigo__topo"><strong>Código refatorado</strong><button class="copiar" data-copy="codigo-5">Copiar</button></div><pre><code id="codigo-5">const status = [
+    { codigo: 'OK', resposta: 'Sucesso' },
+    { codigo: 'FAILED', resposta: 'Erro' },
+    { codigo: 'PENDING', resposta: 'Pendente' }
+];
+
+let mensagem = '';
+const codigoAtual = 'OK';
+
+for (let i = 0; i &lt; status.length; i++) {
+    if (status[i].codigo === codigoAtual) {
+        mensagem = status[i].resposta;
+    }
+}
+
+console.log(mensagem);
+// Sucesso</code></pre></div>
+      <div class="execucao"><div><strong>Executar exemplo</strong><p>Selecione o código a consultar.</p><select id="status-select"><option>OK</option><option>FAILED</option><option>PENDING</option></select></div><button class="botao" data-run="5">Executar</button><output id="saida-5">Aguardando execução.</output></div>
+    </section>
+
+    <section class="card entrega" id="entrega">
+      <h2>Documento de entrega</h2>
+      <p>A página apresenta a transcrição literal de cada questão em bloco separado da resposta. Assim, eventuais erros tipográficos do material original permanecem apenas no bloco de enunciado e não são confundidos com a explicação ou com o código desenvolvido.</p>
+      <div class="links-entrega">
+        <a class="botao" href="docs/PW2_Exercicios_Cap_6_7_8_Thiago_Ferreira_Prates_Neves_CORRIGIDO.docx">Baixar Word corrigido</a>
+        <a class="botao secundario" href="docs/enunciado_exercicios_6_7_8.pdf">Abrir PDF original</a>
+        <a class="botao secundario" href="entrega.html">Ver documento de entrega</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container rodape__conteudo">
+      <div><strong>Programação Web II (2026.2)</strong><span>Exercícios cap. 6, 7 e 8</span></div>
+      <div><strong>Thiago Ferreira Prates Neves</strong><span>Matrícula 202511865 • UAB Brumado - BA</span></div>
+      <button class="botao-imprimir" type="button" onclick="window.print()">Imprimir atividade</button>
+    </div>
+  </footer>
+</body>
+</html>
+
